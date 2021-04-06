@@ -29,6 +29,8 @@ ALLOWED_HOSTS = []
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
+JQUERY_URL = False
+USE_DJANGO_JQUERY = True
 
 # Application definition
 
@@ -40,6 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'accounts',
+    'training',
+    'smart_selects',
 ]
 
 MIDDLEWARE = [
