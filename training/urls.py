@@ -5,5 +5,6 @@ from .views import *
 app_name = 'training'
 
 urlpatterns = [
-    path('homepage/', indexview, name='homepage'),
+    path('homepage/', indexview, name='homepage-client'),
+    path('homepage-personaltrainer/', personalview, name='homepage-pt'),
 ]

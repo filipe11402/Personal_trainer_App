@@ -16,7 +16,10 @@ def loginview(request):
 
         if user is not None:
             login(request, user)
-            return redirect('training:homepage')
+            if user.is_pt:
+                return redirect('training:homepage-pt')
+            else:
+                return redirect('training:homepage-client')
 
     context = {}
     

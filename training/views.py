@@ -1,13 +1,20 @@
 from django.shortcuts import render
+from .decorators import *
+
+
+@onlypt
+def personalview(request):
+
+    context = {}
+
+    return render(request, 'training/index_pt.html', context)
 
 
 def indexview(request):
 
-    current_user = request.user
-
-    context = {
-        'user': current_user,
-    }
+    context = {}
 
     return render(request, 'training/index_client.html', context)
+
+
 
