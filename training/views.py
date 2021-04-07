@@ -1,3 +1,13 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def indexview(request):
+
+    current_user = request.user
+
+    context = {
+        'user': current_user,
+    }
+
+    return render(request, 'training/index_client.html', context)
+
