@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from .decorators import unauthenticateduser
+from .forms import CustomUserCreationForm
 
 
 @unauthenticateduser
@@ -16,10 +17,7 @@ def loginview(request):
 
         if user is not None:
             login(request, user)
-            if user.is_pt:
-                return redirect('training:homepage-pt')
-            else:
-                return redirect('training:homepage-client')
+            return redirect('training:homepage-pt')
 
     context = {}
     
@@ -30,3 +28,18 @@ def loginview(request):
 def logoutview(request):
     logout(request)
     return redirect('accounts:login')
+
+
+@login_required(login_url='accounts:login')
+def registerview(request):
+
+    form = CustomUserCreationForm()
+
+    if request.method == 'POST':
+        pass
+
+    context = {
+        'form': form,
+    }
+
+    return render(request, 'accounts/register.html', context)

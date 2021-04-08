@@ -1,11 +1,11 @@
 {% extends 'base_training.html' %}
 
-{% block title %}Personal Trainer HomePage | FIT ADMIN{% endblock title %}
+{% block title %}ADMIN PANEL | FIT ADMIN{% endblock title %}
 
 {% block content %}
- <!-- Header -->
- <header class="w3-container" style="padding-top:22px">
-    <h5><b><i class="fa fa-dashboard"></i> PT DASHBOARD</b></h5>
+  <!-- Header -->
+  <header class="w3-container" style="padding-top:22px">
+    <h5><b><i class="fa fa-dashboard"></i>ADMIN DASHBOARD</b></h5>
   </header>
 
   <div class="w3-row-padding w3-margin-bottom">
@@ -13,10 +13,10 @@
       <div class="w3-container w3-red w3-padding-16">
         <div class="w3-left"><i class="fa fa-comment w3-xxxlarge"></i></div>
         <div class="w3-right">
-          <h3>{{ number_clients }}</h3>
+          <h3>52</h3>
         </div>
         <div class="w3-clear"></div>
-        <h4>Number of clients</h4>
+        <h4>Training Plans</h4>
       </div>
     </div>
   </div>
@@ -24,19 +24,27 @@
   <div class="w3-panel">
     <div class="w3-row-padding" style="margin:0 -16px">
       <div class="w3-twothird">
-        <h5>Your clients</h5>
+        <h5>Feeds</h5>
         <table class="table table-striped">
           <thead>
             <tr>
-              <th scope="col">Name</th>
+              <th scope="col">Username</th>
+              <th scope="col">Personal Trainer/Client</th>
             </tr>
           </thead>
           <tbody>
-          {% for client in total_clients %}
+            {% for pt in all_pts %}
             <tr>
-              <td>{{ client.username }}</td>
+              <td>{{ pt.username }}</td>
+              <td>Personal Trainer</td>
             </tr>
-          {% endfor %}
+            {% endfor %}
+            {% for client in all_clients %}
+            <tr>
+                <td>{{ client.username }}</td>
+                <td>Client</td>
+            </tr>
+            {% endfor %}
           </tbody>
         </table>
       </div>
