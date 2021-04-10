@@ -9,8 +9,8 @@ class CustomUser(AbstractUser):
 
 class PersonalTrainer(models.Model):
 	username = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
-	is_pt = models.BooleanField(default=True)
-	is_client = models.BooleanField(default=False)
+	is_pt = models.BooleanField(default=True, blank=True)
+	is_client = models.BooleanField(default=False, blank=True)
 
 
 	def __str__(self):

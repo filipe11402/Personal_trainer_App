@@ -7,7 +7,7 @@ from .models import CustomUser, PersonalTrainer, Client
 def create_personal_client(sender, instance, created, **kwargs):
 	if created:
 		if instance.is_pt:
+			print("i entered the signal")
 			PersonalTrainer.objects.create(username=instance)
-
-		elif instance.is_client:
+		else:
 			Client.objects.create(username=instance)
