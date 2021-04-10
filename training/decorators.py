@@ -12,6 +12,12 @@ def onlypt(viewfunc):
     return inner_func
 
 
+def clientonly(viewfunc):
+    def inner_func(request, *args, **kwargs):
+        if request.user.is_client:
+            return redirect('training:homepage-client')
+
+
 def adminonly(viewfunc):
     def inner_func(request, *args, **kwargs):
         if request.user.is_superuser:
