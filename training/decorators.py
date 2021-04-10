@@ -7,6 +7,8 @@ def onlypt(viewfunc):
             return viewfunc(request, *args, **kwargs)
         elif request.user.is_client:
             return redirect('training:homepage-client')
+        elif request.user.is_superuser:
+            return redirect('training:admin-panel')
     return inner_func
 
 
