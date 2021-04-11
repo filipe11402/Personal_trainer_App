@@ -26,6 +26,7 @@ def personalview(request):
     return render(request, 'training/index_pt.html', context)
 
 @login_required(login_url='accounts:login')
+@clientonly
 def indexview(request):
 
     # fetch all training plans 
@@ -39,7 +40,7 @@ def indexview(request):
     return render(request, 'training/index_client.html', context)
 
 
-@login_required
+@login_required(login_url='accounts:login')
 @adminonly
 def adminview(request):
 
