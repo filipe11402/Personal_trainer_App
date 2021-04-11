@@ -39,9 +39,15 @@ def registerview(request):
         form = CustomUserCreationForm(request.POST)
 
         if form.is_valid():
-            form.save()
+            user = form.save()
             
-        return redirect('training:admin-panel')
+            if user.is_pt:
+                user.is_client = False
+            else:
+                user.is_client = True
+
+            user.save()
+            return redirect('training:admin-panel')
 
     context = {
         'form': form,

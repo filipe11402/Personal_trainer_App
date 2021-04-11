@@ -6,7 +6,9 @@ from django import forms
 
 class CustomUserCreationForm(UserCreationForm):
 
-	is_pt = forms.BooleanField(required=False)
+	BOOL_CHOICES = ((True, 'Yes'), (False, 'No'))
+
+	is_pt = forms.TypedChoiceField(coerce=lambda x: x=='True', choices=BOOL_CHOICES, widget=forms.RadioSelect)
 
 	class Meta:
 		model = CustomUser

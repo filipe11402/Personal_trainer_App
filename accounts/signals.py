@@ -9,5 +9,5 @@ def create_personal_client(sender, instance, created, **kwargs):
 		if instance.is_pt:
 			print("i entered the signal")
 			PersonalTrainer.objects.create(username=instance)
-		else:
+		elif not instance.is_pt:
 			Client.objects.create(username=instance)
